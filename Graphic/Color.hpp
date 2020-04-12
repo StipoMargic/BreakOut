@@ -9,10 +9,8 @@
 #include <cstdint>
 
 struct SDL_PixelFormat;
-
 class Color {
  public:
-
   static const SDL_PixelFormat *mFormat;
   static void InitColorFormat(const SDL_PixelFormat *format);
 
