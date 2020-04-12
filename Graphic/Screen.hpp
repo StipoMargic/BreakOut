@@ -12,7 +12,7 @@
 class SDL_Window;
 
 class Vec2D;
-
+class Line2D;
 class SDL_Surface;
 
 class Screen {
@@ -34,6 +34,7 @@ class Screen {
   // Draw Methods
   void Draw(int x, int y, const Color &color); // Pass cord
   void Draw(const Vec2D &point, const Color &color); // Pass Vector
+  void Draw(const Line2D &line, const Color &color); // Draw 2D Line
 
  private:
   Screen(const Screen &screen); // Only I can copy

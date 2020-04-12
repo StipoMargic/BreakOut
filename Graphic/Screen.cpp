@@ -37,6 +37,8 @@ SDL_Window *Screen::Init(uint32_t width, uint32_t height, uint32_t magnification
     SDL_PixelFormat *pixelFormat = mnoPtrWindowSurface->format;
     Color::InitColorFormat(pixelFormat); // OR BOOOOOOOOOOOOOOOOOOOM CRASH
 
+    //  cout << SDL_GetPixelFormatName(pixelFormat->format);
+
     mClearColor = Color::Black();
 
     mBackBuffer.Init(pixelFormat->format, mWidth, mHeight);
