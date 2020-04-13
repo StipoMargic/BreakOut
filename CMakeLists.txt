@@ -5,9 +5,9 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS} Utils Graphic)
+include_directories(${SDL2_INCLUDE_DIRS} Utils Graphic Shapes)
 
 add_executable(break_out
         main.cpp Graphic/Color.cpp Graphic/Color.hpp Utils/Vec2D.cpp Utils/Utils.cpp Utils/Vec2D.hpp Utils/Vec2D.cpp Graphic/ScreenBuffer.cpp Graphic/ScreenBuffer.hpp Graphic/Screen.cpp Graphic/Screen.hpp Shapes/Line2D.cpp Shapes/Line2D.hpp)
 
-target_link_libraries(break_out ${SDL2_LIBRARIES} )
+target_link_libraries(break_out ${SDL2_LIBRARIES})

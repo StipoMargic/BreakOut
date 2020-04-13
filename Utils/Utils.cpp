@@ -6,8 +6,6 @@
 #include "Utils.hpp"
 #include <cmath>
 
-
-
 bool IsEqual(float x, float y)
 {
 	return fabsf(x - y) < EPSILON;

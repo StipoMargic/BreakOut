@@ -3,21 +3,25 @@
 //
 
 #include "Screen.hpp"
-#include <ScreenBuffer.hpp>
+#include <Line2D.hpp>
 #include <Color.hpp>
 #include <iostream>
 #include <Vec2D.hpp>
 #include <SDL2/SDL.h>
+#include <cassert>
 
 using namespace std;
 
-Screen::~Screen() {
+Screen::~Screen()
+{
   SDL_DestroyWindow(moPtrWindow);
   SDL_Quit();
 }
 
-SDL_Window *Screen::Init(uint32_t width, uint32_t height, uint32_t magnification) {
-  if (SDL_Init(SDL_INIT_VIDEO)) {
+SDL_Window* Screen::Init(uint32_t width, uint32_t height, uint32_t magnification)
+{
+  if (SDL_Init(SDL_INIT_VIDEO))
+  {
     cout << "Sh?t happened!" << endl;
     return nullptr;
   }
@@ -32,9 +36,10 @@ SDL_Window *Screen::Init(uint32_t width, uint32_t height, uint32_t magnification
                                  magnification * mHeight,
                                  0);
 
-  if (moPtrWindow) {
+  if (moPtrWindow)
+  {
     mnoPtrWindowSurface = SDL_GetWindowSurface(moPtrWindow);
-    SDL_PixelFormat *pixelFormat = mnoPtrWindowSurface->format;
+    SDL_PixelFormat* pixelFormat = mnoPtrWindowSurface->format;
     Color::InitColorFormat(pixelFormat); // OR BOOOOOOOOOOOOOOOOOOOM CRASH
 
     //  cout << SDL_GetPixelFormatName(pixelFormat->format);
@@ -47,8 +52,12 @@ SDL_Window *Screen::Init(uint32_t width, uint32_t height, uint32_t magnification
   return nullptr;
 }
 
-void Screen::SwitchScreens() {
-  if (moPtrWindow) {
+void Screen::SwitchScreens()
+{
+  assert(moPtrWindow);
+
+  if (moPtrWindow)
+  {
     ClearScreen();
     SDL_BlitScaled(mBackBuffer.GetSurface(), nullptr, mnoPtrWindowSurface, nullptr);
 
@@ -57,20 +66,98 @@ void Screen::SwitchScreens() {
   }
 }
 
-void Screen::Draw(int x, int y, const Color &color) {
-  if (moPtrWindow) {
+void Screen::Draw(int x, int y, const Color& color)
+{
+  assert(moPtrWindow);
+
+  if (moPtrWindow)
+  {
     mBackBuffer.SetPixel(color, x, y);
   }
 }
 
-void Screen::Draw(const Vec2D &point, const Color &color) {
-  if (moPtrWindow) {
+void Screen::Draw(const Vec2D& point, const Color& color)
+{
+  assert(moPtrWindow);
+
+  if (moPtrWindow)
+  {
     mBackBuffer.SetPixel(color, point.GetX(), point.GetY());
   }
 }
 
-void Screen::ClearScreen() {
-  if (moPtrWindow) {
+void Screen::ClearScreen()
+{
+  assert(moPtrWindow);
+
+  if (moPtrWindow)
+  {
     SDL_FillRect(mnoPtrWindowSurface, nullptr, mClearColor.GetPixelColor());
+  }
+}
+
+// https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm Bresenham's line algorithm
+void Screen::Draw(const Line2D& line, const Color& color)
+{
+  assert(moPtrWindow);
+
+  assert(moPtrWindow);
+  if (moPtrWindow)
+  {
+    int dx, dy;
+    int x0 = roundf(line.GetPoint0().GetX());
+    int y0 = roundf(line.GetPoint0().GetY());
+    int x1 = roundf(line.GetPoint1().GetX());
+    int y1 = roundf(line.GetPoint1().GetY());
+
+    dx = x1 - x0;
+    dy = y1 - y0;
+
+    signed const char ix((dx > 0) - (dx < 0)); // 1 or -1
+    signed const char iy((dy > 0) - (dy < 0)); // 1 or -1
+
+    dx = abs(dx) * 2;
+    dy = abs(dy) * 2;
+
+    Draw(x0, y0, color);
+
+    if (dx >= dy)
+    {
+      // increase x
+      int d = dy - dx / 2;
+
+      while (x0 != x1)
+      {
+        if (d >= 0)
+        {
+          d -= dx;
+          y0 += iy;
+        }
+
+        d += dy;
+        x0 += ix;
+
+        Draw(x0, y0, color);
+      }
+    }
+    else
+    {
+      // increase y
+      int d = dx - dy / 2;
+
+      while (y0 != y1)
+      {
+        if (d >= 0)
+        {
+          d -= dy;
+          x0 += ix;
+        }
+
+        d += dx;
+        y0 += iy;
+
+        Draw(x0, y0, color);
+      }
+    }
   }
 }

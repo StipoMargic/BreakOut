@@ -10,21 +10,25 @@
 
 class SDL_Surface;
 
-class ScreenBuffer {
+class ScreenBuffer
+{
  public:
-  ScreenBuffer() : mSurface(nullptr) {}
-  ScreenBuffer(const ScreenBuffer &screenBuffer);
-  ~ScreenBuffer();
-  ScreenBuffer &operator=(const ScreenBuffer &screenBuffer);
-  void Init(uint32_t format, uint32_t width, uint32_t height);
+    ScreenBuffer() : mSurface(nullptr)
+    { }
 
-  inline SDL_Surface *GetSurface() { return mSurface; };
+    ScreenBuffer(const ScreenBuffer& screenBuffer);
+    ~ScreenBuffer();
+    ScreenBuffer& operator=(const ScreenBuffer& screenBuffer);
+    void Init(uint32_t format, uint32_t width, uint32_t height);
 
-  void Clear(const Color &c = Color::Black());
-  void SetPixel(const Color &color, int x, int y);
+    inline SDL_Surface* GetSurface()
+    { return mSurface; };
+
+    void Clear(const Color& c = Color::Black());
+    void SetPixel(const Color& color, int x, int y);
  private:
-  SDL_Surface *mSurface;
-  uint32_t GetIndex(int row, int column);
+    SDL_Surface* mSurface;
+    uint32_t GetIndex(int row, int column) const;
 };
 
 #endif //BREAK_OUT_UTILS_SCREENBUFFER_HPP_
