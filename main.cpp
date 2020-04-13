@@ -1,11 +1,10 @@
 #include <SDL2/SDL.h>
-#include <iostream>
 #include <Color.hpp>
 #include <Screen.hpp>
 #include <Line2D.hpp>
+#include <AaRectangle.hpp>
 
 using namespace std;
-
 int main()
 {
 	Screen screen;
@@ -14,6 +13,7 @@ int main()
 
 	screen.Draw(100, 105, Color::Blue());
 	screen.Draw(Line2D(Vec2D(0,100), Vec2D(200,100)), Color::Red());
+	screen.Draw(AARectangle(Vec2D(100,100), 50,60), Color::Blue());
 	screen.SwitchScreens();
 
 	SDL_Event sdlEvent;
