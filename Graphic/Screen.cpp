@@ -9,7 +9,10 @@
 #include <Vec2D.hpp>
 #include <SDL2/SDL.h>
 #include <cassert>
+#include "Utils.hpp"
+#include "Circle.hpp"
 #include <AaRectangle.hpp>
+#include <algorithm>
 
 using namespace std;
 
@@ -31,11 +34,11 @@ SDL_Window* Screen::Init(uint32_t width, uint32_t height, uint32_t magnification
 	mHeight = height;
 	moPtrWindow = SDL_CreateWindow("Nerdic",
 
-																 SDL_WINDOWPOS_CENTERED,
-																 SDL_WINDOWPOS_CENTERED,
-																 magnification * mWidth,
-																 magnification * mHeight,
-																 0);
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		magnification * mWidth,
+		magnification * mHeight,
+		0);
 
 	if (moPtrWindow)
 	{
@@ -161,16 +164,139 @@ void Screen::Draw(const Line2D& line, const Color& color)
 	}
 }
 
-void Screen::Draw(const AARectangle& rectangle, const Color& color)
+void Screen::Draw(const AARectangle& rectangle, const Color& color, bool fill)
 {
+	if (fill)
+	{
+		ColorFill(rectangle.GetPoints(), color);
+	}
 	std::vector<Vec2D> points = rectangle.GetPoints();
-	Line2D p0top1(points[ 0 ], points[ 1 ]);
-	Line2D p1top2(points[ 1 ], points[ 2 ]);
-	Line2D p2top3(points[ 2 ], points[ 3 ]);
-	Line2D p3top0(points[ 3 ], points[ 0 ]);
+	Line2D p0top1(points[0], points[1]);
+	Line2D p1top2(points[1], points[2]);
+	Line2D p2top3(points[2], points[3]);
+	Line2D p3top0(points[3], points[0]);
 
 	Draw(p0top1, color);
 	Draw(p1top2, color);
 	Draw(p2top3, color);
 	Draw(p3top0, color);
+}
+
+void Screen::Draw(const Circle& circle, const Color& color, bool fill)
+{
+
+	static unsigned int NUMBER_OF_LINE_SEGMENT = 50;
+	std::vector<Vec2D> circlePoints;
+	std::vector<Line2D> lines;
+	float angle = TWO_PI / float(NUMBER_OF_LINE_SEGMENT);
+
+	Vec2D p0 = Vec2D(circle.GetCenter().GetX() + circle.GetRadius(), circle.GetCenter().GetY());
+	Vec2D p1 = p0;
+
+	Line2D nextLineToDraw;
+
+	for (int i = 0; i < NUMBER_OF_LINE_SEGMENT; ++i)
+	{
+		p1.Rotate(angle, circle.GetCenter());
+		nextLineToDraw.SetP1(p1);
+		nextLineToDraw.SetP0(p0);
+
+		lines.push_back(nextLineToDraw);
+		p0 = p1;
+		circlePoints.push_back(p0);
+	}
+
+	if (fill)
+	{
+		ColorFill(circlePoints, color);
+	}
+}
+
+// PolyFill Algorithm
+void Screen::ColorFill(const vector<Vec2D>& points, const Color& color)
+{
+	if (points.size() > 0)
+	{
+		float top = points[0].GetY();
+		float bottom = points[0].GetY();
+		float right = points[0].GetX();
+		float left = points[0].GetX();
+
+		for (size_t i = 1; i < points.size(); ++i)
+		{
+			if (points[i].GetY() < top)
+			{
+				top = points[i].GetY();
+			}
+
+			if (points[i].GetY() > bottom)
+			{
+				bottom = points[i].GetY();
+			}
+
+			if (points[i].GetX() < left)
+			{
+				left = points[i].GetX();
+			}
+
+			if (points[i].GetX() > right)
+			{
+				right = points[i].GetX();
+			}
+		}
+
+		for (int pixelY = top; pixelY < bottom; ++pixelY)
+		{
+			std::vector<float> nodeXVec;
+
+			size_t j = points.size() - 1;
+
+			for (size_t i = 0; i < points.size(); ++i)
+			{
+				float pointiY = points[i].GetY();
+				float pointjY = points[j].GetY();
+
+				if ((pointiY <= (float)pixelY && pointjY > (float)pixelY)
+					|| (pointjY <= (float)pixelY && pointiY > (float)pixelY))
+				{
+					float denom = pointjY - pointiY;
+					if (IsEqual(denom, 0))
+					{
+						continue;
+					}
+
+					float x = points[i].GetX() + (pixelY - pointiY) / (denom) * (points[j].GetX() - points[i].GetX());
+					nodeXVec.push_back(x);
+				}
+
+				j = i;
+			}
+
+			std::sort(nodeXVec.begin(), nodeXVec.end(), std::less<>());
+
+			for (size_t k = 0; k < nodeXVec.size(); k += 2)
+			{
+				if (nodeXVec[k] > right)
+				{
+					break;
+				}
+
+				if (nodeXVec[k + 1] > left)
+				{
+					if (nodeXVec[k] < left)
+					{
+						nodeXVec[k] = left;
+					}
+					if (nodeXVec[k + 1] > right)
+					{
+						nodeXVec[k + 1] = right;
+					}
+					for (int pixelX = nodeXVec[k]; pixelX < nodeXVec[k + 1]; ++pixelX)
+					{
+						Draw(pixelX, pixelY, color);
+					}
+				}
+			}
+		}
+	}
 }

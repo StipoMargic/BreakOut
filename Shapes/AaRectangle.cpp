@@ -40,10 +40,10 @@ std::vector<Vec2D> AARectangle::GetPoints() const
 	std::vector<Vec2D> points;
 
 	// Insert all 4 points clockwise
-	points.push_back(mPoints[ 0 ]);
-	points.push_back(Vec2D(mPoints[ 1 ].GetX(), mPoints[ 0 ].GetY()));
-	points.push_back(mPoints[ 1 ]);
-	points.push_back(Vec2D(mPoints[ 0 ].GetX(), mPoints[ 1 ].GetY()));
+	points.push_back(mPoints[0]);
+	points.push_back(Vec2D(mPoints[1].GetX(), mPoints[0].GetY()));
+	points.push_back(mPoints[1]);
+	points.push_back(Vec2D(mPoints[0].GetX(), mPoints[1].GetY()));
 
 	return points;
 }
@@ -51,8 +51,14 @@ std::vector<Vec2D> AARectangle::GetPoints() const
 bool AARectangle::Intersects(const AARectangle& otherRectangle) const
 {
 	return !(otherRectangle.GetBottomRight().GetX() < GetTopLeft().GetX() ||
-			otherRectangle.GetTopLeft().GetX() > GetBottomRight().GetX() ||
-			otherRectangle.GetBottomRight().GetY() < GetTopLeft().GetY() ||
-			otherRectangle.GetTopLeft().GetY() > GetBottomRight().GetY());
+		otherRectangle.GetTopLeft().GetX() > GetBottomRight().GetX() ||
+		otherRectangle.GetBottomRight().GetY() < GetTopLeft().GetY() ||
+		otherRectangle.GetTopLeft().GetY() > GetBottomRight().GetY());
+}
+AARectangle AARectangle::Inset(const AARectangle& rect, Vec2D& insets)
+{
+	return AARectangle(rect.GetTopLeft() + insets,
+		rect.GetWidth() - 2 * insets.GetX(),
+		rect.GetHeight() - 2 * insets.GetY());
 }
 
