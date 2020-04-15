@@ -26,7 +26,7 @@ class Circle : public Shape
 	{
 		return mRadius;
 	}
-	inline float SetRadius(float radius)
+	inline void aSetRadius(float radius)
 	{
 		mRadius = radius;
 	}

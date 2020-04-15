@@ -6,18 +6,16 @@
 #define BREAK_OUT_UTILS_SCREEN_HPP_
 
 #include <cstdint>
-#include <ScreenBuffer.hpp>
-#include <Color.hpp>
+#include "ScreenBuffer.hpp"
+#include "Color.hpp"
+#include <AaRectangle.hpp>
+#include <Circle.hpp>
 #include <vector>
 
-class SDL_Window;
-
 class Vec2D;
-class AARectangle;
 class Line2D;
-class Circle;
-class SDL_Surface;
-
+struct SDL_Window;
+struct SDL_Surface;
 class Screen
 {
  public:
@@ -60,7 +58,7 @@ class Screen
 	Screen(const Screen& screen); // Only I can copy
 	Screen& operator=(const Screen& screen);
 	void ClearScreen();
-void ColorFill(const std::vector<Vec2D>& points, const Color& color);
+	void ColorFill(const std::vector<Vec2D>& points, const Color& color);
 	uint32_t mHeight;
 	uint32_t mWidth;
 	Color mClearColor;

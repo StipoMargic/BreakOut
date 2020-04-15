@@ -53,7 +53,7 @@ SDL_Window* Screen::Init(uint32_t width, uint32_t height, uint32_t magnification
 		mBackBuffer.Init(pixelFormat->format, mWidth, mHeight);
 		mBackBuffer.Clear(mClearColor);
 	}
-	return nullptr;
+	return moPtrWindow;
 }
 
 void Screen::SwitchScreens()
