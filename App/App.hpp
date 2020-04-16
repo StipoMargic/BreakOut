@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <SDL2/SDL.h>
 #include <memory>
+#include "InputController.hpp"
 
 class Scene;
 class App
@@ -37,6 +38,7 @@ class App
 	SDL_Window* mnoPrrWindow;
 
 	std::vector<std::unique_ptr<Scene>> mSceneStack;
+	InputController mInputController;
 };
 
 #endif //BREAK_OUT_APP_APP_HPP_

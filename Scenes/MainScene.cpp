@@ -5,6 +5,7 @@
 #include "MainScene.hpp"
 #include "Screen.hpp"
 #include "Line2D.hpp"
+#include "GameController.hpp"
 
 MainScene::MainScene()
 {
@@ -24,7 +25,18 @@ void MainScene::Draw(Screen& theScreen)
 
 void MainScene::Update(uint32_t dt)
 {
+	ButtonAction action;
+	action.key = GameController::ActionKey();
+	action.action = [](uint32_t dt, InputState state)
+	{
+	  if (GameController::IsPressed(state))
+	  {
+		  std::cout << "Action key pressed" << std::endl;
+	  }
 
+	};
+
+	mGameController.AddInputActionForKy(action);
 }
 
 void MainScene::Init()

@@ -34,7 +34,6 @@ void App::Run()
 	assert(mnoPrrWindow);
 	if (mnoPrrWindow)
 	{
-		SDL_Event sdlEvent;
 		bool isOpen = true;
 
 		uint32_t lastTick = SDL_GetTicks(); // MS since init
@@ -42,6 +41,11 @@ void App::Run()
 
 		uint32_t dt = 10; // Delta time update game every x sec
 		uint32_t accumulator = 0; // how many ticks happend
+
+		mInputController.Init([&isOpen](uint32_t dt, InputState state)
+		{
+		  isOpen = false;
+		});
 
 		while (isOpen)
 		{
@@ -55,15 +59,8 @@ void App::Run()
 			lastTick = currentTick;
 			accumulator += frameTime;
 
-			while (SDL_PollEvent(&sdlEvent))
-			{
-				switch (sdlEvent.type)
-				{
-				case SDL_QUIT:
-					isOpen = false;
-					break;
-				}
-			}
+			mInputController.Update(dt);
+
 			Scene* topScene = App::TopScene();
 			while (accumulator >= dt)
 			{
@@ -80,6 +77,7 @@ void App::Run()
 void App::PushScene(std::unique_ptr<Scene> theScene)
 {
 	theScene->Init();
+	mInputController.SetGameController(theScene->GetGameController());
 	mSceneStack.emplace_back(std::move(theScene));
 	SDL_SetWindowTitle(mnoPrrWindow, TopScene()->GetSceneName().c_str());
 }
@@ -89,6 +87,7 @@ void App::PopScene()
 	if (mSceneStack.size() > 1)
 	{
 		mSceneStack.pop_back();
+		mInputController.SetGameController(TopScene()->GetGameController());
 	}
 
 	SDL_SetWindowTitle(mnoPrrWindow, TopScene()->GetSceneName().c_str());
