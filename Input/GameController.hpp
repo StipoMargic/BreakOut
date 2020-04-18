@@ -16,14 +16,18 @@ class GameController
 	InputAction GetActionForKey(InputKey key);
 	void AddInputActionForKy(const ButtonAction& buttonAction);
 
+	inline void ClearAll()
+	{
+		mButtonActions.clear();
+	}
 	// Hide SDL Implementation
 
 	inline static bool IsPressed(InputState state)
 	{
-		return state = SDL_PRESSED;
+		return state == SDL_PRESSED;
 	}
 
-	inline static bool IsRelease(InputState state)
+	inline static bool IsReleased(InputState state)
 	{
 		return state == SDL_RELEASED;
 	}

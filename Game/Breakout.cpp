@@ -57,7 +57,8 @@ void Breakout::ResetGame()
 {
 	AARectangle paddleRect = { Vec2D(App::Singleton().GetWidth() / 2 - Paddle::PADDLE_WIDTH / 2,
 		App::Singleton().GetHeight() - 3 * Paddle::PADDLE_HEIGHT), Paddle::PADDLE_WIDTH, Paddle::PADDLE_HEIGHT };
+	AARectangle boundary = { Vec2D::Zero, App::Singleton().GetWidth(), App::Singleton().GetHeight() };
 
-	mPaddle.Init(paddleRect);
+	mPaddle.Init(paddleRect, boundary);
 }
 

@@ -7,10 +7,11 @@
 #include "Utils.hpp"
 #include "BoundaryEdge.hpp"
 
-void Paddle::Init(const AARectangle& rectangle)
+void Paddle::Init(const AARectangle& rectangle, const AARectangle& boundary)
 {
 	Excluder::Init(rectangle);
-		mDirection = PaddleDirection::NONE;
+	mBoundary = boundary;
+	mDirection = PaddleDirection::NONE;
 }
 
 void Paddle::Update(uint32_t dt)
@@ -29,6 +30,19 @@ void Paddle::Update(uint32_t dt)
 		Vec2D dx = dir * VELOCITY * MillisecondsToSeconds(dt);
 
 		MoveBy(dx);
+
+
+
+		const AARectangle& aaRect = GetRectangle();
+
+		if(IsGreaterThanOrEqual(mBoundary.GetTopLeft().GetX(), aaRect.GetTopLeft().GetX()))
+		{
+			MoveTo(Vec2D(mBoundary.GetTopLeft().GetX(), aaRect.GetTopLeft().GetY()));
+		}
+		else if(IsGreaterThanOrEqual(aaRect.GetBottomRight().GetX(), mBoundary.GetBottomRight().GetX()))
+		{
+			MoveTo(Vec2D(mBoundary.GetBottomRight().GetX() - aaRect.GetWidth(), aaRect.GetTopLeft().GetY()));
+		}
 
 	}
 

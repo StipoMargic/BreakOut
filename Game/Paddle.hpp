@@ -21,7 +21,7 @@ class Paddle : public Excluder
 	static const uint32_t PADDLE_WIDTH = 50;
 	static const uint32_t PADDLE_HEIGHT = 10;
 
-	void Init(const AARectangle& rectangle);
+	void Init(const AARectangle& rectangle, const AARectangle& bouandry);
 	void Update(uint32_t dt);
 	void Draw(Screen& screen) ;
 

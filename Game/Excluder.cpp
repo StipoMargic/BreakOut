@@ -6,37 +6,30 @@
 #include <cmath>
 #include <cassert>
 #include "Utils.hpp"
-
-void Excluder::Init(const AARectangle& rectangle, bool reverseNormals)
+void Excluder::Init(const AARectangle& rect, bool reverseNormals)
 {
-	mAARectangle = rectangle;
+	mAARectangle = rect;
 	mReverseNormals = reverseNormals;
-
 	SetupEdges();
 }
 
-bool Excluder::HasCollided(const AARectangle& rectangle, BoundaryEdge& edge)
+bool Excluder::HasCollided(const AARectangle& rect, BoundaryEdge& edge) const
 {
-	if (mAARectangle.Intersects(rectangle))
+	if(mAARectangle.Intersects(rect))
 	{
-		float
-			yMin = mAARectangle.GetTopLeft().GetY() >= rectangle.GetTopLeft().GetY() ? mAARectangle.GetTopLeft().GetY()
-																					 : rectangle.GetTopLeft().GetY();
-		float yMax = mAARectangle.GetBottomRight().GetY() <= rectangle.GetBottomRight().GetY()
-					 ? mAARectangle.GetBottomRight().GetY() : rectangle.GetBottomRight().GetY();
+		float yMin = mAARectangle.GetTopLeft().GetY() >= (rect.GetTopLeft().GetY()) ? mAARectangle.GetTopLeft().GetY() : rect.GetTopLeft().GetY();
+		float yMax = mAARectangle.GetBottomRight().GetY() <= rect.GetBottomRight().GetY() ? mAARectangle.GetBottomRight().GetY() : rect.GetBottomRight().GetY();
 
 		float ySize = yMax - yMin;
-		float xMin =
-			mAARectangle.GetTopLeft().GetX() >= rectangle.GetTopLeft().GetX() ? mAARectangle.GetTopLeft().GetX()
-																			  : rectangle.GetTopLeft().GetX();
-		float xMax = mAARectangle.GetBottomRight().GetX() <= rectangle.GetBottomRight().GetX()
-					 ? mAARectangle.GetBottomRight().GetX() : rectangle.GetBottomRight().GetX();
+
+		float xMin = mAARectangle.GetTopLeft().GetX() >= rect.GetTopLeft().GetX() ? mAARectangle.GetTopLeft().GetX() : rect.GetTopLeft().GetX();
+		float xMax = mAARectangle.GetBottomRight().GetX() <= rect.GetBottomRight().GetX() ? mAARectangle.GetBottomRight().GetX() : rect.GetBottomRight().GetX();
 
 		float xSize = xMax - xMin;
 
-		if (xSize > ySize)
+		if(xSize > ySize)
 		{
-			if (rectangle.GetCenter().GetY() > mAARectangle.GetCenter().GetY())
+			if(rect.GetCenter().GetY() > mAARectangle.GetCenter().GetY())
 			{
 				edge = mEdges[BOTTOM_EDGE];
 			}
@@ -47,42 +40,40 @@ bool Excluder::HasCollided(const AARectangle& rectangle, BoundaryEdge& edge)
 		}
 		else
 		{
-			if (rectangle.GetCenter().GetX() > mAARectangle.GetCenter().GetX())
-			{
-				edge = mEdges[RIGHT_EDGE];
-			}
-			else
+			if(rect.GetCenter().GetX() < mAARectangle.GetCenter().GetX())
 			{
 				edge = mEdges[LEFT_EDGE];
 			}
+			else
+			{
+				edge = mEdges[RIGHT_EDGE];
+			}
 		}
+
 		return true;
 	}
+
 	return false;
 }
 
-Vec2D Excluder::GetCollisionOffset(const AARectangle& rectangle)
+Vec2D Excluder::GetCollisionOffset(const AARectangle& rect) const
 {
 	BoundaryEdge edge;
 	Vec2D offset = Vec2D::Zero;
-	if (HasCollided(rectangle, edge))
+
+	if(HasCollided(rect, edge))
 	{
-		float
-			yMin = mAARectangle.GetTopLeft().GetY() >= rectangle.GetTopLeft().GetY() ? mAARectangle.GetTopLeft().GetY()
-																					 : rectangle.GetTopLeft().GetY();
-		float yMax = mAARectangle.GetBottomRight().GetY() <= rectangle.GetBottomRight().GetY()
-					 ? mAARectangle.GetBottomRight().GetY() : rectangle.GetBottomRight().GetY();
+		float yMin = mAARectangle.GetTopLeft().GetY() >= (rect.GetTopLeft().GetY()) ? mAARectangle.GetTopLeft().GetY() : rect.GetTopLeft().GetY();
+		float yMax = mAARectangle.GetBottomRight().GetY() <= rect.GetBottomRight().GetY() ? mAARectangle.GetBottomRight().GetY() : rect.GetBottomRight().GetY();
 
 		float ySize = yMax - yMin;
-		float xMin =
-			mAARectangle.GetTopLeft().GetX() >= rectangle.GetTopLeft().GetX() ? mAARectangle.GetTopLeft().GetX()
-																			  : rectangle.GetTopLeft().GetX();
-		float xMax = mAARectangle.GetBottomRight().GetX() <= rectangle.GetBottomRight().GetX()
-					 ? mAARectangle.GetBottomRight().GetX() : rectangle.GetBottomRight().GetX();
+
+		float xMin = mAARectangle.GetTopLeft().GetX() >= rect.GetTopLeft().GetX() ? mAARectangle.GetTopLeft().GetX() : rect.GetTopLeft().GetX();
+		float xMax = mAARectangle.GetBottomRight().GetX() <= rect.GetBottomRight().GetX() ? mAARectangle.GetBottomRight().GetX() : rect.GetBottomRight().GetX();
 
 		float xSize = xMax - xMin;
 
-		if (!IsEqual(edge.normal.GetY(), 0))
+		if(!IsEqual(edge.normal.GetY(), 0))
 		{
 			offset = (ySize + 1) * edge.normal;
 		}
@@ -91,12 +82,13 @@ Vec2D Excluder::GetCollisionOffset(const AARectangle& rectangle)
 			offset = (xSize + 1) * edge.normal;
 		}
 	}
+
 	return offset;
 }
 
-void Excluder::MoveBy(const Vec2D& offset)
+void Excluder::MoveBy(const Vec2D& delta)
 {
-	mAARectangle.MoveBy(offset);
+	mAARectangle.MoveBy(delta);
 	SetupEdges();
 }
 
@@ -109,9 +101,9 @@ void Excluder::MoveTo(const Vec2D& point)
 const BoundaryEdge& Excluder::GetEdge(EdgeType edge) const
 {
 	assert(edge != NUM_EDGES);
-
 	return mEdges[edge];
 }
+
 
 void Excluder::SetupEdges()
 {

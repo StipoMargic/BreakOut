@@ -44,7 +44,7 @@ class AARectangle : public Shape
 
 	inline float GetWidth() const
 	{
-		return GetBottomRight().GetX() + GetTopLeft().GetX() + 1;
+		return GetBottomRight().GetX() - GetTopLeft().GetX() + 1;
 	}
 
 	void MoveTo(const Vec2D& offset);

@@ -10,22 +10,25 @@ void InputController::Update(uint32_t dt)
 {
 	SDL_Event sdlEvent;
 
-	while (SDL_PollEvent(&sdlEvent))
+	while(SDL_PollEvent(&sdlEvent))
 	{
-		switch (sdlEvent.type)
+		switch(sdlEvent.type)
 		{
 		case SDL_QUIT:
 		{
 			mQuit(dt, SDL_PRESSED);
 		}
+			break;
 		case SDL_KEYDOWN:
 		case SDL_KEYUP:
-			if (mnoPtrCurrentController)
+
+			if(mnoPtrCurrentController)
 			{
 				InputAction action = mnoPtrCurrentController->GetActionForKey(sdlEvent.key.keysym.sym);
 
 				action(dt, static_cast<InputState>(sdlEvent.key.state));
 			}
+			break;
 		}
 	}
 }

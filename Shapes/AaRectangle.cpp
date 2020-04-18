@@ -16,15 +16,26 @@ AARectangle::AARectangle(const Vec2D& topLeft, const Vec2D& bottomRight)
 	mPoints.push_back(bottomRight);
 }
 
-void AARectangle::MoveTo(const Vec2D& offset)
+void AARectangle::MoveTo(const Vec2D& position)
 {
-	SetTopLeft(offset);
-	SetBottomRight(Vec2D(GetTopLeft().GetX() + GetWidth() - 1, GetTopLeft().GetY() + GetHeight() - 1));
+	float width = GetWidth();
+	float height = GetHeight();
+
+	SetTopLeft(position);
+	SetBottomRight(Vec2D(position.GetX() + width - 1, position.GetY() + height - 1));
 }
 
 Vec2D AARectangle::GetCenter() const
 {
-	return Vec2D(GetTopLeft().GetX() + GetWidth() / 2.0f, GetTopLeft().GetY() + GetWidth() / 2.0f);
+	return Vec2D(GetTopLeft().GetX() + GetWidth()/2.0f, GetTopLeft().GetY() + GetHeight()/2.0f);
+}
+
+bool AARectangle::Intersects(const AARectangle& otherRect) const
+{
+	return !(otherRect.GetBottomRight().GetX() < GetTopLeft().GetX() ||
+		otherRect.GetTopLeft().GetX() > GetBottomRight().GetX() ||
+		otherRect.GetBottomRight().GetY() < GetTopLeft().GetY() ||
+		otherRect.GetTopLeft().GetY() > GetBottomRight().GetY());
 }
 
 bool AARectangle::ContainsPoint(const Vec2D& point) const
@@ -35,11 +46,15 @@ bool AARectangle::ContainsPoint(const Vec2D& point) const
 	return withinX && withinY;
 }
 
+AARectangle AARectangle::Inset(const AARectangle& rect, Vec2D& insets)
+{
+	return AARectangle(rect.GetTopLeft() + insets, rect.GetWidth() - 2*insets.GetX(), rect.GetHeight() - 2*insets.GetY());
+}
+
 std::vector<Vec2D> AARectangle::GetPoints() const
 {
 	std::vector<Vec2D> points;
 
-	// Insert all 4 points clockwise
 	points.push_back(mPoints[0]);
 	points.push_back(Vec2D(mPoints[1].GetX(), mPoints[0].GetY()));
 	points.push_back(mPoints[1]);
@@ -47,18 +62,3 @@ std::vector<Vec2D> AARectangle::GetPoints() const
 
 	return points;
 }
-
-bool AARectangle::Intersects(const AARectangle& otherRectangle) const
-{
-	return !(otherRectangle.GetBottomRight().GetX() < GetTopLeft().GetX() ||
-		otherRectangle.GetTopLeft().GetX() > GetBottomRight().GetX() ||
-		otherRectangle.GetBottomRight().GetY() < GetTopLeft().GetY() ||
-		otherRectangle.GetTopLeft().GetY() > GetBottomRight().GetY());
-}
-AARectangle AARectangle::Inset(const AARectangle& rect, Vec2D& insets)
-{
-	return AARectangle(rect.GetTopLeft() + insets,
-		rect.GetWidth() - 2 * insets.GetX(),
-		rect.GetHeight() - 2 * insets.GetY());
-}
-

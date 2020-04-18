@@ -16,8 +16,8 @@ class Excluder
 	}
 
 	void Init(const AARectangle& rectangle, bool reverseNormals = false);
-	bool HasCollided(const AARectangle& rectangle, BoundaryEdge& edge);
-	Vec2D GetCollisionOffset(const AARectangle& rectangle);
+	bool  HasCollided(const AARectangle& rectangle, BoundaryEdge& edge) const ;
+	Vec2D GetCollisionOffset(const AARectangle& rectangle) const ;
 	void MoveBy(const Vec2D& offset);
 	void MoveTo(const Vec2D& point);
 
