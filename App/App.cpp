@@ -4,9 +4,8 @@
 #include <iostream>
 
 #include "App.hpp"
-#include "Circle.hpp"
-#include "AaRectangle.hpp"
-#include "Color.hpp"
+#include "GameScene.hpp"
+#include "Breakout.hpp"
 #include "Line2D.hpp"
 #include <SDL2/SDL.h>
 #include <cassert>
@@ -26,6 +25,13 @@ bool App::Init(uint32_t width, uint32_t height, uint32_t magnification)
 	std::unique_ptr<MainScene> mainScene = std::make_unique<MainScene>();
 
 	PushScene(std::move(mainScene));
+
+	{
+		std::unique_ptr<Breakout> breakoutGame = std::make_unique<Breakout>();
+		std::unique_ptr<GameScene> breakoutScene = std::make_unique<GameScene>(std::move(breakoutGame));
+
+		PushScene(std::move(breakoutScene));
+	}
 	return mnoPrrWindow != nullptr;
 }
 
