@@ -14,7 +14,7 @@ class GameController
  public:
 	GameController();
 	InputAction GetActionForKey(InputKey key);
-	void AddInputActionForKy(const ButtonAction& buttonAction);
+	void AddInputActionForKey(const ButtonAction& buttonAction);
 
 	inline void ClearAll()
 	{

@@ -36,7 +36,7 @@ void MainScene::Update(uint32_t dt)
 
 	};
 
-	mGameController.AddInputActionForKy(action);
+	mGameController.AddInputActionForKey(action);
 }
 
 void MainScene::Init()

@@ -21,5 +21,5 @@ void GameScene::Draw(Screen& theScreen)
 
 std::string GameScene::GetSceneName() const
 {
-	return std::string("Ycene Name");
+	return mGame->GetName();
 }

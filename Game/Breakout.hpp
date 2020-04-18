@@ -7,6 +7,8 @@
 
 #include "Game.hpp"
 #include "Paddle.hpp"
+#include "Ball.hpp"
+#include "LevelBoundary.hpp"
 
 class Breakout: public Game
 {
@@ -14,11 +16,15 @@ class Breakout: public Game
 	void Init(GameController& gameController) override ;
 	void Update(uint32_t dt) override ;
 	void Draw(Screen& screen) override ;
-	std::string GetName() override {return "Nerdic";}
+	const std::string& GetName() override;
 
  private:
 	Paddle mPaddle;
+	Ball mBall;
+	LevelBoundary mLevelBoundary;
 	void ResetGame();
+
+	const Vec2D INITIAL_VELOCITY = {100,- 100};
 };
 
 #endif //BREAK_OUT_GAME_BREAKOUT_HPP_

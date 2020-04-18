@@ -18,7 +18,7 @@ InputAction GameController::GetActionForKey(InputKey key)
 	{};
 }
 
-void GameController::AddInputActionForKy(const ButtonAction& buttonAction)
+void GameController::AddInputActionForKey(const ButtonAction& buttonAction)
 {
 	mButtonActions.push_back(buttonAction);
 }

@@ -23,7 +23,7 @@ class Excluder
 
 	const BoundaryEdge& GetEdge(EdgeType edge) const;
 
-	inline AARectangle& GetRectangle()
+	inline const AARectangle& GetRectangle() const
 	{
 		return mAARectangle;
 	}

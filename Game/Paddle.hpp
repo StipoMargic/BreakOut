@@ -7,6 +7,7 @@
 
 #include "Excluder.hpp"
 #include <cstdint>
+#include "Ball.hpp"
 
 class Screen;
 enum PaddleDirection
@@ -22,8 +23,9 @@ class Paddle : public Excluder
 	static const uint32_t PADDLE_HEIGHT = 10;
 
 	void Init(const AARectangle& rectangle, const AARectangle& bouandry);
-	void Update(uint32_t dt);
-	void Draw(Screen& screen) ;
+	void Update(uint32_t dt, Ball& ball);
+	void Draw(Screen& screen);
+	bool Bounce(Ball& ball);
 
 	inline bool IsMovingLeft() const
 	{
@@ -49,6 +51,8 @@ class Paddle : public Excluder
 	PaddleDirection mDirection;
 	AARectangle mBoundary;
 	const float VELOCITY = 100; // Pixel per sec
+
+	const float CORNER_OF_PADDLE = 0.2f;
 };
 
 #endif //BREAK_OUT_GAME_PADDLE_HPP_
