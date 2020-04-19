@@ -9,6 +9,7 @@
 #include "Paddle.hpp"
 #include "Ball.hpp"
 #include "LevelBoundary.hpp"
+#include "GameLevel.hpp"
 
 class Breakout: public Game
 {
@@ -19,6 +20,7 @@ class Breakout: public Game
 	const std::string& GetName() override;
 
  private:
+	GameLevel mLevel;
 	Paddle mPaddle;
 	Ball mBall;
 	LevelBoundary mLevelBoundary;
