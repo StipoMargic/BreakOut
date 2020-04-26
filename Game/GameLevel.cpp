@@ -73,14 +73,14 @@ void GameLevel::DefaultLevel(const AARectangle& boundary)
 	const int BLOCK_WIDTH = 16;
 	const int BLOCK_HEIGHT = 8;
 
-	const int NUM_BLOCKS_ACROSS = ((int)boundary.GetWidth() - (2 * (BLOCK_WIDTH) / BLOCK_WIDTH));
+	const int NUM_BLOCKS_ACROSS = 12;
 	const int NUM_BLOCK_ROWS = 5;
 
-	float startX = ((int) boundary.GetWidth() - (NUM_BLOCKS_ACROSS * (BLOCK_WIDTH+1))) /2;
+	float startX = 4;
 
 	for (int r = 0; r < NUM_BLOCK_ROWS; ++r)
 	{
-		AARectangle block = { Vec2D(startX, BLOCK_HEIGHT * (r + 1)), BLOCK_WIDTH, BLOCK_HEIGHT };
+		AARectangle block = { Vec2D(startX, BLOCK_HEIGHT * (r + 1)), BLOCK_WIDTH - 1, BLOCK_HEIGHT - 1 };
 		for (int c = 0; c < NUM_BLOCKS_ACROSS; ++c)
 		{
 			Block b;
@@ -89,6 +89,18 @@ void GameLevel::DefaultLevel(const AARectangle& boundary)
 			block.MoveBy(Vec2D{ BLOCK_WIDTH, 0 });
 		}
 	}
+}
+
+bool GameLevel::IsLevelComplete() const
+{
+	for (size_t i = 0; i < mBlocks.size(); ++i)
+	{
+		if (!mBlocks[i].IsDestroyed())
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 

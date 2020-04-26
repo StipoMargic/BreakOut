@@ -19,6 +19,8 @@ class GameLevel
 
 	void Init(const AARectangle& boundary);
 	void Load(const std::vector<Block>& blocks);
+
+	bool IsLevelComplete() const;
 	void Update(uint32_t dt, Ball& ball);
 	void Draw(Screen& screen);
  private:
