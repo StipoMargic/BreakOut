@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(break_out)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/sdl/")
 
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS} Utils Graphic Shapes App Scenes Input Game)

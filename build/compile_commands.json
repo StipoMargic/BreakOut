@@ -1,0 +1,112 @@
+[
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/main.cpp.o -c /home/stipo/Projects/BreakOut/main.cpp",
+  "file": "/home/stipo/Projects/BreakOut/main.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Graphic/Color.cpp.o -c /home/stipo/Projects/BreakOut/Graphic/Color.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Graphic/Color.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Utils/Vec2D.cpp.o -c /home/stipo/Projects/BreakOut/Utils/Vec2D.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Utils/Vec2D.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Utils/Utils.cpp.o -c /home/stipo/Projects/BreakOut/Utils/Utils.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Utils/Utils.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Graphic/ScreenBuffer.cpp.o -c /home/stipo/Projects/BreakOut/Graphic/ScreenBuffer.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Graphic/ScreenBuffer.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Graphic/Screen.cpp.o -c /home/stipo/Projects/BreakOut/Graphic/Screen.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Graphic/Screen.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Shapes/Line2D.cpp.o -c /home/stipo/Projects/BreakOut/Shapes/Line2D.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Shapes/Line2D.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Shapes/Shape.cpp.o -c /home/stipo/Projects/BreakOut/Shapes/Shape.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Shapes/Shape.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Shapes/AaRectangle.cpp.o -c /home/stipo/Projects/BreakOut/Shapes/AaRectangle.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Shapes/AaRectangle.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Shapes/Circle.cpp.o -c /home/stipo/Projects/BreakOut/Shapes/Circle.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Shapes/Circle.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/App/App.cpp.o -c /home/stipo/Projects/BreakOut/App/App.cpp",
+  "file": "/home/stipo/Projects/BreakOut/App/App.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Scenes/MainScene.cpp.o -c /home/stipo/Projects/BreakOut/Scenes/MainScene.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Scenes/MainScene.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Input/GameController.cpp.o -c /home/stipo/Projects/BreakOut/Input/GameController.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Input/GameController.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Input/InputController.cpp.o -c /home/stipo/Projects/BreakOut/Input/InputController.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Input/InputController.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Scenes/GameScene.cpp.o -c /home/stipo/Projects/BreakOut/Scenes/GameScene.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Scenes/GameScene.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Game/Breakout.cpp.o -c /home/stipo/Projects/BreakOut/Game/Breakout.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Game/Breakout.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Game/Excluder.cpp.o -c /home/stipo/Projects/BreakOut/Game/Excluder.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Game/Excluder.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Game/Paddle.cpp.o -c /home/stipo/Projects/BreakOut/Game/Paddle.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Game/Paddle.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Game/Ball.cpp.o -c /home/stipo/Projects/BreakOut/Game/Ball.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Game/Ball.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Game/LevelBoundary.cpp.o -c /home/stipo/Projects/BreakOut/Game/LevelBoundary.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Game/LevelBoundary.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Game/Block.cpp.o -c /home/stipo/Projects/BreakOut/Game/Block.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Game/Block.cpp"
+},
+{
+  "directory": "/home/stipo/Projects/BreakOut/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/stipo/Projects/BreakOut/Utils -I/home/stipo/Projects/BreakOut/Graphic -I/home/stipo/Projects/BreakOut/Shapes -I/home/stipo/Projects/BreakOut/App -I/home/stipo/Projects/BreakOut/Scenes -I/home/stipo/Projects/BreakOut/Input -I/home/stipo/Projects/BreakOut/Game  -g   -std=gnu++14 -o CMakeFiles/break_out.dir/Game/GameLevel.cpp.o -c /home/stipo/Projects/BreakOut/Game/GameLevel.cpp",
+  "file": "/home/stipo/Projects/BreakOut/Game/GameLevel.cpp"
+}
+]

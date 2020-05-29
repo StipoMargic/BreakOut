@@ -6,7 +6,7 @@
 #include <cassert>
 #include "ScreenBuffer.hpp"
 
-ScreenBuffer::ScreenBuffer(const ScreenBuffer& screenBuffer)
+ScreenBuffer::ScreenBuffer(const ScreenBuffer &screenBuffer)
 {
   mSurface = SDL_CreateRGBSurfaceWithFormat(0,
                                             screenBuffer.mSurface->w,
@@ -26,7 +26,7 @@ ScreenBuffer::~ScreenBuffer()
   }
 }
 
-ScreenBuffer& ScreenBuffer::operator=(const ScreenBuffer& screenBuffer)
+ScreenBuffer &ScreenBuffer::operator=(const ScreenBuffer &screenBuffer)
 {
   if (this == &screenBuffer)
   {
@@ -57,20 +57,20 @@ void ScreenBuffer::Init(uint32_t format, uint32_t width, uint32_t height)
   Clear();
 }
 
-void ScreenBuffer::Clear(const Color& c)
+void ScreenBuffer::Clear(const Color &c)
 {
   SDL_FillRect(mSurface, nullptr, c.GetPixelColor());
 }
 
-void ScreenBuffer::SetPixel(const Color& color, int x, int y)
+void ScreenBuffer::SetPixel(const Color &color, int x, int y)
 {
   SDL_LockSurface(mSurface);
   if (mSurface && (y < mSurface->h && y >= 0 && x < mSurface->w && x >= 0))
   {
-    uint32_t* pixels = (uint32_t*)mSurface->pixels;
+    uint32_t *pixels = (uint32_t *)mSurface->pixels;
     uint32_t index = GetIndex(y, x);
 
-    pixels[ index ] = color.GetPixelColor();
+    pixels[index] = color.GetPixelColor();
   }
   SDL_UnlockSurface(mSurface);
 }

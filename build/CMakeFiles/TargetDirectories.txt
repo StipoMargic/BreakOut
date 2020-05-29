@@ -1,0 +1,3 @@
+/home/stipo/Projects/BreakOut/build/CMakeFiles/rebuild_cache.dir
+/home/stipo/Projects/BreakOut/build/CMakeFiles/edit_cache.dir
+/home/stipo/Projects/BreakOut/build/CMakeFiles/break_out.dir
