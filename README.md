@@ -14,3 +14,5 @@ Windows user: Install linux
 - Scenes Graphic ad Shapes is directory that present how we present UI to user
 
 App is built on Singleton pattern.
+
+To start game press "A"
