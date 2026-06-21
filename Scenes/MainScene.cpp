@@ -39,7 +39,7 @@ void MainScene::Update(uint32_t dt)
 	mGameController.AddInputActionForKey(action);
 }
 
-void MainScene::Init()
+void MainScene::Init(const AARectangle& /*boundary*/)
 {
 
 }

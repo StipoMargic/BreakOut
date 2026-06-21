@@ -40,12 +40,16 @@ ScreenBuffer &ScreenBuffer::operator=(const ScreenBuffer &screenBuffer)
 
   if (screenBuffer.mSurface != nullptr)
   {
-    SDL_CreateRGBSurfaceWithFormat(0,
-                                   screenBuffer.mSurface->w,
-                                   screenBuffer.mSurface->h,
-                                   0,
-                                   screenBuffer.mSurface->format->format);
+    mSurface = SDL_CreateRGBSurfaceWithFormat(0,
+                                              screenBuffer.mSurface->w,
+                                              screenBuffer.mSurface->h,
+                                              0,
+                                              screenBuffer.mSurface->format->format);
     SDL_BlitSurface(screenBuffer.mSurface, nullptr, mSurface, nullptr);
+  }
+  else
+  {
+    mSurface = nullptr;
   }
 
   return *this;
@@ -82,4 +86,5 @@ uint32_t ScreenBuffer::GetIndex(int row, int column) const
   {
     return row * mSurface->w + column;
   }
+  return 0;
 }

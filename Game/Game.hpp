@@ -9,6 +9,7 @@
 
 class GameController;
 class Screen;
+class AARectangle;
 
 class Game
 {
@@ -17,7 +18,7 @@ class Game
 	{
 	}
 
-	virtual void Init(GameController& gameController) = 0;
+	virtual void Init(GameController& gameController, const AARectangle& boundary) = 0;
 	virtual void Update(uint32_t dt) = 0;
 	virtual void Draw(Screen& screen) = 0;
 	virtual const std::string& GetName() = 0;

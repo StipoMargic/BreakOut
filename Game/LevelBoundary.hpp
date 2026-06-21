@@ -16,7 +16,7 @@ class LevelBoundary
 	}
 
 	LevelBoundary(const AARectangle& boundary);
-	bool HasCollied(const Ball& ball, BoundaryEdge& edge);
+	bool HasCollided(const Ball& ball, BoundaryEdge& edge);
 
 	inline const AARectangle& GetAARectangle() const
 	{

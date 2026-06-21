@@ -5,11 +5,11 @@
 #include "Breakout.hpp"
 #include "InputAction.hpp"
 #include "GameController.hpp"
-#include "App.hpp"
 #include <cstdint>
 
-void Breakout::Init(GameController& gameController)
+void Breakout::Init(GameController& gameController, const AARectangle& boundary)
 {
+	mBoundary = boundary;
 	ResetGame();
 
 	ButtonAction serveAction;
@@ -17,27 +17,26 @@ void Breakout::Init(GameController& gameController)
 	serveAction.key = GameController::ActionKey();
 	serveAction.action = [this](uint32_t dt, InputState state)
 	{
+	  if (!GameController::IsPressed(state))
+	  {
+		  return;
+	  }
+
 	  if (mGameState == IN_SERVE)
 	  {
-		  if (GameController::IsPressed(state))
+		  mGameState = IN_PLAY;
+		  if (mPaddle.IsMovingLeft())
 		  {
-			  mGameState = IN_PLAY;
-			  if (mPaddle.IsMovingLeft())
-			  {
-				  mBall.SetVelocity(Vec2D(-100, -100));
-			  }
-			  else
-			  {
-				  mBall.SetVelocity(Vec2D(100, -100));
-			  }
+			  mBall.SetVelocity(Vec2D(-INITIAL_VELOCITY.GetX(), INITIAL_VELOCITY.GetY()));
 		  }
-		  else if (mGameState == GAME_OVER)
+		  else
 		  {
-			  if (GameController::IsPressed(state))
-			  {
-				  ResetGame();
-			  }
+			  mBall.SetVelocity(INITIAL_VELOCITY);
 		  }
+	  }
+	  else if (mGameState == GAME_OVER)
+	  {
+		  ResetGame();
 	  }
 	};
 
@@ -100,7 +99,7 @@ void Breakout::Update(uint32_t dt)
 			return;
 		}
 
-		if (mLevelBoundary.HasCollied(mBall, edge))
+		if (mLevelBoundary.HasCollided(mBall, edge))
 		{
 			mBall.Bounce(edge);
 			return;
@@ -134,7 +133,7 @@ void Breakout::Draw(Screen& screen)
 	mLevel.Draw(screen);
 	screen.Draw(mLevelBoundary.GetAARectangle(), Color::White(), false);
 
-	Circle lifes = { Vec2D(7, App::Singleton().GetHeight() - 10), 5 };
+	Circle lifes = { Vec2D(7, mBoundary.GetHeight() - 10), 5 };
 
 	for (int i = 0; i < mLives; ++i)
 	{
@@ -145,17 +144,16 @@ void Breakout::Draw(Screen& screen)
 
 void Breakout::ResetGame()
 {
-	mPaddleCutOff = App::Singleton().GetHeight() - 2 * Paddle::PADDLE_HEIGHT;
+	mPaddleCutOff = mBoundary.GetHeight() - 2 * Paddle::PADDLE_HEIGHT;
 	mLives = NUM_LIVES;
-	AARectangle paddleRect = { Vec2D(App::Singleton().GetWidth() / 2 - Paddle::PADDLE_WIDTH / 2,
-		App::Singleton().GetHeight() - 3 * Paddle::PADDLE_HEIGHT), Paddle::PADDLE_WIDTH, Paddle::PADDLE_HEIGHT };
-	AARectangle boundary = { Vec2D::Zero, App::Singleton().GetWidth(), App::Singleton().GetHeight() };
-	mLevelBoundary = { boundary };
+	AARectangle paddleRect = { Vec2D(mBoundary.GetWidth() / 2 - Paddle::PADDLE_WIDTH / 2,
+		mBoundary.GetHeight() - 3 * Paddle::PADDLE_HEIGHT), Paddle::PADDLE_WIDTH, Paddle::PADDLE_HEIGHT };
+	mLevelBoundary = { mBoundary };
 
-	mPaddle.Init(paddleRect, boundary);
-	mBall.MoveTo(Vec2D(App::Singleton().GetWidth() / 2, App::Singleton().GetHeight() / 2));
+	mPaddle.Init(paddleRect, mBoundary);
+	mBall.MoveTo(Vec2D(mBoundary.GetWidth() / 2, mBoundary.GetHeight() / 2));
 	SetToServeState();
-	mLevel.Init(boundary);
+	mLevel.Init(mBoundary);
 }
 
 const std::string& Breakout::GetName()

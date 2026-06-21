@@ -32,26 +32,26 @@ class Line2D
 		mPoint1 = point;
 	}
 
-	inline Vec2D GetPoint0() const
+	[[nodiscard]] inline Vec2D GetPoint0() const
 	{
 		return mPoint0;
 	}
 
-	inline Vec2D GetPoint1() const
+	[[nodiscard]] inline Vec2D GetPoint1() const
 	{
 		return mPoint1;
 	}
 
-	inline float MinDistanceFrom(const Vec2D& p, bool limitToSegment = false) const
+	[[nodiscard]] inline float MinDistanceFrom(const Vec2D& p, bool limitToSegment = false) const
 	{
 		return p.Distance(ClosestPoint(p, limitToSegment));
 	}
 
 	bool operator==(Line2D line) const;
-	float DistanceFromPoint(const Vec2D& point, bool limitToSegment = false) const;
-	Vec2D ClosestPoint(const Vec2D& point, bool limitToSegment = false) const;
-	Vec2D Midooint() const;
-	float Length() const;
+	[[nodiscard]] float DistanceFromPoint(const Vec2D& point, bool limitToSegment = false) const;
+	[[nodiscard]] Vec2D ClosestPoint(const Vec2D& point, bool limitToSegment = false) const;
+	[[nodiscard]] Vec2D Midpoint() const;
+	[[nodiscard]] float Length() const;
  private:
 	Vec2D mPoint0;
 	Vec2D mPoint1;

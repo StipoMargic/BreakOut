@@ -15,7 +15,9 @@ class Scene;
 class App
 {
  public:
-	static App& Singleton();
+	App();
+	~App();
+
 	bool Init(uint32_t width, uint32_t height, uint32_t mag);
 	void Run();
 
@@ -35,7 +37,7 @@ class App
 
  private:
 	Screen mScreen;
-	SDL_Window* mnoPrrWindow;
+	SDL_Window* mnoPtrWindow = nullptr;
 
 	std::vector<std::unique_ptr<Scene>> mSceneStack;
 	InputController mInputController;

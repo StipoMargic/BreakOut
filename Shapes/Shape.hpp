@@ -11,12 +11,12 @@
 class Shape
 {
  public:
-		virtual Vec2D GetCenter() const = 0;
+		[[nodiscard]] virtual Vec2D GetCenter() const = 0;
 
 		virtual ~Shape()
 		{ }
 
-		inline virtual std::vector<Vec2D> const GetPoints()
+		[[nodiscard]] inline virtual std::vector<Vec2D> GetPoints() const
 		{ return mPoints; }
 
 		void MoveBy(const Vec2D& offset);

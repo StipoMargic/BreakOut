@@ -4,9 +4,9 @@
 
 #include "GameScene.hpp"
 
-void GameScene::Init()
+void GameScene::Init(const AARectangle& boundary)
 {
-	mGame->Init(mGameController);
+	mGame->Init(mGameController, boundary);
 }
 
 void GameScene::Update(uint32_t dt)

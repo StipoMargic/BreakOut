@@ -12,16 +12,12 @@
 #include "MainScene.hpp"
 #include <memory>
 
-App& App::Singleton()
-{
-	static App theApp;
-
-	return theApp;
-}
+App::App() = default;
+App::~App() = default;
 
 bool App::Init(uint32_t width, uint32_t height, uint32_t magnification)
 {
-	mnoPrrWindow = mScreen.Init(width, height, magnification);
+	mnoPtrWindow = mScreen.Init(width, height, magnification);
 	std::unique_ptr<MainScene> mainScene = std::make_unique<MainScene>();
 
 	PushScene(std::move(mainScene));
@@ -32,13 +28,13 @@ bool App::Init(uint32_t width, uint32_t height, uint32_t magnification)
 
 		PushScene(std::move(breakoutScene));
 	}
-	return mnoPrrWindow != nullptr;
+	return mnoPtrWindow != nullptr;
 }
 
 void App::Run()
 {
-	assert(mnoPrrWindow);
-	if (mnoPrrWindow)
+	assert(mnoPtrWindow);
+	if (mnoPtrWindow)
 	{
 		bool isOpen = true;
 
@@ -67,7 +63,7 @@ void App::Run()
 
 			mInputController.Update(dt);
 
-			Scene* topScene = App::TopScene();
+			Scene* topScene = TopScene();
 			while (accumulator >= dt)
 			{
 				topScene->Update(dt);
@@ -82,10 +78,11 @@ void App::Run()
 
 void App::PushScene(std::unique_ptr<Scene> theScene)
 {
-	theScene->Init();
+	AARectangle boundary = { Vec2D::Zero, mScreen.GetWidth(), mScreen.GetHeight() };
+	theScene->Init(boundary);
 	mInputController.SetGameController(theScene->GetGameController());
 	mSceneStack.emplace_back(std::move(theScene));
-	SDL_SetWindowTitle(mnoPrrWindow, TopScene()->GetSceneName().c_str());
+	SDL_SetWindowTitle(mnoPtrWindow, TopScene()->GetSceneName().c_str());
 }
 
 void App::PopScene()
@@ -96,7 +93,7 @@ void App::PopScene()
 		mInputController.SetGameController(TopScene()->GetGameController());
 	}
 
-	SDL_SetWindowTitle(mnoPrrWindow, TopScene()->GetSceneName().c_str());
+	SDL_SetWindowTitle(mnoPtrWindow, TopScene()->GetSceneName().c_str());
 }
 
 Scene* App::TopScene()

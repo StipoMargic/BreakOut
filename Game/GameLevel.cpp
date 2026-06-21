@@ -20,11 +20,12 @@ void GameLevel::Update(uint32_t dt, Ball& ball)
 	std::vector<Block> collidedBlocks;
 
 	BoundaryEdge edgeToBounceOffOf;
-	Block* noPtrBlockToBounceOffOf = nullptr;
+	size_t blockToBounceOffOf = mBlocks.size();
 
 	float largestMag = -1.0f;
-	for (auto& block : mBlocks)
+	for (size_t i = 0; i < mBlocks.size(); ++i)
 	{
+		Block& block = mBlocks[i];
 		BoundaryEdge edge;
 		if (!block.IsDestroyed() && block.HasCollided(ball.GetBoundingRectangle(), edge))
 		{
@@ -35,14 +36,14 @@ void GameLevel::Update(uint32_t dt, Ball& ball)
 			if (mag > largestMag)
 			{
 				edgeToBounceOffOf = edge;
-				noPtrBlockToBounceOffOf = &block;
+				blockToBounceOffOf = i;
 			}
 		}
 	}
-	if (noPtrBlockToBounceOffOf != nullptr)
+	if (blockToBounceOffOf < mBlocks.size())
 	{
-		noPtrBlockToBounceOffOf->Bounce(ball, edgeToBounceOffOf);
-		noPtrBlockToBounceOffOf->ReduceHP();
+		mBlocks[blockToBounceOffOf].Bounce(ball, edgeToBounceOffOf);
+		mBlocks[blockToBounceOffOf].ReduceHP();
 	}
 	for (const auto& block: collidedBlocks)
 	{

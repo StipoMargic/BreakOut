@@ -15,7 +15,7 @@ class Block : public Excluder
  public:
 	static const int UNBREAKABLE = -1;
 
-	Block() : mHP(1), mColor(Color::Blue())
+	Block() : mColor(Color::Blue()), mHP(1)
 	{
 	}
 
@@ -28,17 +28,17 @@ class Block : public Excluder
 		mHP -= 1;
 	}
 
-	inline int GetHP() const
+	[[nodiscard]] inline int GetHP() const
 	{
 		return mHP;
 	}
 
-	inline bool IsDestroyed() const
+	[[nodiscard]] inline bool IsDestroyed() const
 	{
 		return mHP == 0;
 	}
 
-	inline Color GetColor() const
+	[[nodiscard]] inline Color GetColor() const
 	{
 		return mColor;
 	}

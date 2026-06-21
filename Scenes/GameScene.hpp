@@ -18,7 +18,7 @@ class GameScene : public Scene
 	{
 	}
 
-	virtual void Init() override;
+	virtual void Init(const AARectangle& boundary) override;
 	virtual void Update(uint32_t dt) override;
 	virtual void Draw(Screen& theScreen) override;
 	virtual std::string GetSceneName() const override;

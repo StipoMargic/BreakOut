@@ -21,7 +21,7 @@ enum GameState
 class Breakout : public Game
 {
  public:
-	void Init(GameController& gameController) override;
+	void Init(GameController& gameController, const AARectangle& boundary) override;
 	void Update(uint32_t dt) override;
 	void Draw(Screen& screen) override;
 	const std::string& GetName() override;
@@ -33,6 +33,7 @@ class Breakout : public Game
 	Paddle mPaddle;
 	Ball mBall;
 	LevelBoundary mLevelBoundary;
+	AARectangle mBoundary;
 	void ResetGame();
 	GameState mGameState;
 

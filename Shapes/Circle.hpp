@@ -18,15 +18,15 @@ class Circle : public Shape
 		mPoints.push_back(center);
 	}
 
-	inline virtual Vec2D GetCenter() const override
+	[[nodiscard]] inline Vec2D GetCenter() const override
 	{
 		return mPoints[0];
 	}
-	inline float GetRadius() const
+	[[nodiscard]] inline float GetRadius() const
 	{
 		return mRadius;
 	}
-	inline void aSetRadius(float radius)
+	inline void SetRadius(float radius)
 	{
 		mRadius = radius;
 	}
@@ -36,8 +36,8 @@ class Circle : public Shape
 		mPoints[0] = position;
 	}
 
-	bool Intersects(const Circle& otherCircle) const;
-	bool Contains(const Vec2D& point) const;
+	[[nodiscard]] bool Intersects(const Circle& otherCircle) const;
+	[[nodiscard]] bool Contains(const Vec2D& point) const;
  private:
 	float mRadius;
 };

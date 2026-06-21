@@ -26,10 +26,10 @@ class Vec2D
     inline void SetY(float y)
     { mY = y; }
 
-    inline float GetX() const
+    [[nodiscard]] inline float GetX() const
     { return mX; }
 
-    inline float GetY() const
+    [[nodiscard]] inline float GetY() const
     { return mY; }
 
     friend std::ostream& operator<<(std::ostream& consoleOut, const Vec2D& vec);
@@ -44,17 +44,18 @@ class Vec2D
     Vec2D operator-(const Vec2D& vec) const;
     Vec2D& operator+=(const Vec2D& vec);
     Vec2D& operator-=(const Vec2D& vec);
-    float Mag2() const;
-    float Mag() const;
-    Vec2D GetUnitVec() const;
+    [[nodiscard]] float Mag2() const;
+    [[nodiscard]] float Mag() const;
+    [[nodiscard]] Vec2D GetUnitVec() const;
     Vec2D& Normalize();
-    float Distance(const Vec2D& vec) const;
-    float Dot(const Vec2D& vec) const;
-    Vec2D ProjectOnto(const Vec2D& vec2) const;
-    float AngleBetween(const Vec2D& vec2) const;
-    Vec2D Reflect(const Vec2D& normal) const;
+    [[nodiscard]] float Distance(const Vec2D& vec) const;
+    [[nodiscard]] float Dot(const Vec2D& vec) const;
+    [[nodiscard]] float Cross(const Vec2D& vec) const;
+    [[nodiscard]] Vec2D ProjectOnto(const Vec2D& vec2) const;
+    [[nodiscard]] float AngleBetween(const Vec2D& vec2) const;
+    [[nodiscard]] Vec2D Reflect(const Vec2D& normal) const;
     void Rotate(float angle, const Vec2D& aroundPoint);
-    Vec2D RotationResult(float angle, const Vec2D& aroundPoint) const;
+    [[nodiscard]] Vec2D RotationResult(float angle, const Vec2D& aroundPoint) const;
     friend Vec2D operator*(float scalar, const Vec2D& vec);
 
  private:

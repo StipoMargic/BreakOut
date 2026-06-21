@@ -26,7 +26,7 @@ SDL_Window* Screen::Init(uint32_t width, uint32_t height, uint32_t magnification
 {
 	if (SDL_Init(SDL_INIT_VIDEO))
 	{
-		cout << "Sh?t happened!" << endl;
+		cerr << "Failed to initialize SDL: " << SDL_GetError() << endl;
 		return nullptr;
 	}
 

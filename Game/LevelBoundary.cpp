@@ -5,7 +5,7 @@
 #include "LevelBoundary.hpp"
 #include "Ball.hpp"
 
-bool LevelBoundary::HasCollied(const Ball& ball, BoundaryEdge& edge)
+bool LevelBoundary::HasCollided(const Ball& ball, BoundaryEdge& edge)
 {
 	for (int i = 0; i < NUM_EDGES; ++i)
 	{

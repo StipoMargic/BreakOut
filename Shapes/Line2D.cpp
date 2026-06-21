@@ -13,7 +13,7 @@ bool Line2D::operator==(Line2D line) const
 
 float Line2D::DistanceFromPoint(const Vec2D& point, bool limitToSegment) const
 {
-  return mPoint1.Distance(ClosestPoint(point, limitToSegment));
+  return point.Distance(ClosestPoint(point, limitToSegment));
 }
 
 Vec2D Line2D::ClosestPoint(const Vec2D& point, bool limitToSegment) const
@@ -32,7 +32,7 @@ Vec2D Line2D::ClosestPoint(const Vec2D& point, bool limitToSegment) const
   return mPoint0 + p0ToP1 * t;
 }
 
-Vec2D Line2D::Midooint() const
+Vec2D Line2D::Midpoint() const
 {
   return Vec2D((mPoint0.GetX() + mPoint1.GetX()) / 2.0f, (mPoint0.GetY() + mPoint1.GetY()) / 2.0f);
 }

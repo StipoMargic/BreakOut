@@ -27,31 +27,31 @@ class AARectangle : public Shape
 		mPoints[1] = bottomRight;
 	}
 
-	inline Vec2D GetTopLeft() const
+	[[nodiscard]] inline Vec2D GetTopLeft() const
 	{
 		return mPoints[0];
 	}
 
-	inline Vec2D GetBottomRight() const
+	[[nodiscard]] inline Vec2D GetBottomRight() const
 	{
 		return mPoints[1];
 	}
 
-	inline float GetHeight() const
+	[[nodiscard]] inline float GetHeight() const
 	{
 		return GetBottomRight().GetY() - GetTopLeft().GetY() + 1;
 	}
 
-	inline float GetWidth() const
+	[[nodiscard]] inline float GetWidth() const
 	{
 		return GetBottomRight().GetX() - GetTopLeft().GetX() + 1;
 	}
 
 	void MoveTo(const Vec2D& offset);
-	bool Intersects(const AARectangle& otherRectangle) const;
-	bool ContainsPoint(const Vec2D& point) const;
-	virtual Vec2D GetCenter() const override;
-	virtual std::vector<Vec2D> GetPoints() const;
+	[[nodiscard]] bool Intersects(const AARectangle& otherRectangle) const;
+	[[nodiscard]] bool ContainsPoint(const Vec2D& point) const;
+	[[nodiscard]] Vec2D GetCenter() const override;
+	[[nodiscard]] std::vector<Vec2D> GetPoints() const override;
 
 	static AARectangle Inset(const AARectangle& rect, Vec2D& insets);
 };

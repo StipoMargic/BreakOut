@@ -19,7 +19,7 @@ struct SDL_Surface;
 class Screen
 {
  public:
-	Screen() : mWidth(0), mHeight(0), moPtrWindow(nullptr), mnoPtrWindowSurface(nullptr)
+	Screen() : mHeight(0), mWidth(0), moPtrWindow(nullptr), mnoPtrWindowSurface(nullptr)
 	{
 	}
 

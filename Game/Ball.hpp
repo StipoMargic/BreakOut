@@ -28,7 +28,7 @@ class Ball
 		mVelocity = Vec2D::Zero;
 	}
 
-	inline AARectangle GetBoundingRectangle() const
+	[[nodiscard]] inline AARectangle GetBoundingRectangle() const
 	{
 		return mBBox;
 	}
@@ -38,17 +38,17 @@ class Ball
 		mVelocity = velocity;
 	}
 
-	inline Vec2D GetVelocity() const
+	[[nodiscard]] inline Vec2D GetVelocity() const
 	{
 		return mVelocity;
 	}
 
-	inline float GetRadius() const
+	[[nodiscard]] inline float GetRadius() const
 	{
 		return mBBox.GetWidth() / 2;
 	}
 
-	inline Vec2D GetPosition() const
+	[[nodiscard]] inline Vec2D GetPosition() const
 	{
 		return mBBox.GetCenter();
 	}

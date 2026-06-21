@@ -128,6 +128,11 @@ float Vec2D::Dot(const Vec2D& vec) const
   return mX * vec.mX + mY * vec.mY;
 }
 
+float Vec2D::Cross(const Vec2D& vec) const
+{
+  return mX * vec.mY - mY * vec.mX;
+}
+
 Vec2D Vec2D::ProjectOnto(const Vec2D& vec2) const
 {
   Vec2D unitVec2 = vec2.GetUnitVec();
