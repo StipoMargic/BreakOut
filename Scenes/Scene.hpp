@@ -13,19 +13,18 @@ class Screen;
 class AARectangle;
 class Scene
 {
- public:
-	virtual ~Scene()
-	{
-	}
+  public:
+    virtual ~Scene() {}
 
-	virtual void Init(const AARectangle& boundary) = 0;
-	virtual void Update(uint32_t dt) = 0;
-	virtual void Draw(Screen& theScreen) = 0;
-	virtual std::string GetSceneName() const = 0;
+    virtual void Init(const AARectangle& boundary) = 0;
+    virtual void Update(uint32_t dt) = 0;
+    virtual void Draw(Screen& theScreen) = 0;
+    virtual std::string GetSceneName() const = 0;
 
-	inline GameController* GetGameController()  {return &mGameController; }
- protected:
-	GameController mGameController;
+    inline GameController* GetGameController() { return &mGameController; }
+
+  protected:
+    GameController mGameController;
 };
 
-#endif //BREAK_OUT_SCENES_SCENE_HPP_
+#endif // BREAK_OUT_SCENES_SCENE_HPP_

@@ -13,51 +13,42 @@
 
 enum GameState
 {
-	IN_PLAY = 0,
-	IN_SERVE,
-	GAME_OVER
+    IN_PLAY = 0,
+    IN_SERVE,
+    GAME_OVER
 };
 
 class Breakout : public Game
 {
- public:
-	void Init(GameController& gameController, const AARectangle& boundary) override;
-	void Update(uint32_t dt) override;
-	void Draw(Screen& screen) override;
-	const std::string& GetName() override;
+  public:
+    void Init(GameController& gameController, const AARectangle& boundary) override;
+    void Update(uint32_t dt) override;
+    void Draw(Screen& screen) override;
+    const std::string& GetName() override;
 
- private:
-	const int NUM_LIVES = 3;
+  private:
+    const int NUM_LIVES = 3;
 
-	GameLevel mLevel;
-	Paddle mPaddle;
-	Ball mBall;
-	LevelBoundary mLevelBoundary;
-	AARectangle mBoundary;
-	void ResetGame();
-	GameState mGameState;
+    GameLevel mLevel;
+    Paddle mPaddle;
+    Ball mBall;
+    LevelBoundary mLevelBoundary;
+    AARectangle mBoundary;
+    void ResetGame();
+    GameState mGameState;
 
-	GameLevel& GetCurrentLevel()
-	{
-		return mLevel;
-	}
+    GameLevel& GetCurrentLevel() { return mLevel; }
 
-	void SetToServeState();
-	bool IsBallPassedPaddle() const;
+    void SetToServeState();
+    bool IsBallPassedPaddle() const;
 
-	inline void ReduceLife()
-	{
-		--mLives;
-	};
+    inline void ReduceLife() { --mLives; };
 
-	inline bool IsGameOver() const
-	{
-		return mLives < 0;
-	}
+    inline bool IsGameOver() const { return mLives < 0; }
 
-	int mLives;
-	float mPaddleCutOff;
-	const Vec2D INITIAL_VELOCITY = { 100, -100 };
+    int mLives;
+    float mPaddleCutOff;
+    const Vec2D INITIAL_VELOCITY = {100, -100};
 };
 
-#endif //BREAK_OUT_GAME_BREAKOUT_HPP_
+#endif // BREAK_OUT_GAME_BREAKOUT_HPP_

@@ -6,20 +6,20 @@
 
 void GameScene::Init(const AARectangle& boundary)
 {
-	mGame->Init(mGameController, boundary);
+    mGame->Init(mGameController, boundary);
 }
 
 void GameScene::Update(uint32_t dt)
 {
-	mGame->Update(dt);
+    mGame->Update(dt);
 }
 
 void GameScene::Draw(Screen& theScreen)
 {
-	mGame->Draw(theScreen);
+    mGame->Draw(theScreen);
 }
 
 std::string GameScene::GetSceneName() const
 {
-	return mGame->GetName();
+    return mGame->GetName();
 }

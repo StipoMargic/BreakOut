@@ -11,53 +11,36 @@
 
 class Ball
 {
- public:
-	Ball() : Ball(Vec2D::Zero, RADIUS)
-	{
-	}
+  public:
+    Ball() : Ball(Vec2D::Zero, RADIUS) {}
 
-	Ball(const Vec2D& pos, float radius):mBBox(pos - Vec2D(radius,radius), radius *2.0f,radius * 2.0f), mVelocity(Vec2D::Zero)  {}
-	void Update(uint32_t dt);
-	void Draw(Screen& screen);
-	void MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool limitToEdge);
-	void MoveTo(const Vec2D& point);
-	void Bounce(const BoundaryEdge& edge);
+    Ball(const Vec2D& pos, float radius)
+        : mBBox(pos - Vec2D(radius, radius), radius * 2.0f, radius * 2.0f), mVelocity(Vec2D::Zero)
+    {
+    }
+    void Update(uint32_t dt);
+    void Draw(Screen& screen);
+    void MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool limitToEdge);
+    void MoveTo(const Vec2D& point);
+    void Bounce(const BoundaryEdge& edge);
 
-	inline void Stop()
-	{
-		mVelocity = Vec2D::Zero;
-	}
+    inline void Stop() { mVelocity = Vec2D::Zero; }
 
-	[[nodiscard]] inline AARectangle GetBoundingRectangle() const
-	{
-		return mBBox;
-	}
+    [[nodiscard]] inline AARectangle GetBoundingRectangle() const { return mBBox; }
 
-	inline void SetVelocity(const Vec2D& velocity)
-	{
-		mVelocity = velocity;
-	}
+    inline void SetVelocity(const Vec2D& velocity) { mVelocity = velocity; }
 
-	[[nodiscard]] inline Vec2D GetVelocity() const
-	{
-		return mVelocity;
-	}
+    [[nodiscard]] inline Vec2D GetVelocity() const { return mVelocity; }
 
-	[[nodiscard]] inline float GetRadius() const
-	{
-		return mBBox.GetWidth() / 2;
-	}
+    [[nodiscard]] inline float GetRadius() const { return mBBox.GetWidth() / 2; }
 
-	[[nodiscard]] inline Vec2D GetPosition() const
-	{
-		return mBBox.GetCenter();
-	}
+    [[nodiscard]] inline Vec2D GetPosition() const { return mBBox.GetCenter(); }
 
- private:
-	AARectangle mBBox;
-	Vec2D mVelocity;
+  private:
+    AARectangle mBBox;
+    Vec2D mVelocity;
 
-	static const float RADIUS;
+    static const float RADIUS;
 };
 
-#endif //BREAK_OUT_GAME_BALL_HPP_
+#endif // BREAK_OUT_GAME_BALL_HPP_

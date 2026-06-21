@@ -2,7 +2,6 @@
 // Created by stipo on 09. 04. 2020..
 //
 
-
 #ifndef UTILS_VEC2D_HPP
 #define UTILS_VEC2D_HPP
 
@@ -10,27 +9,20 @@
 
 class Vec2D
 {
- public:
-
+  public:
     static const Vec2D Zero;
 
-    Vec2D() : Vec2D(0, 0)
-    { }
+    Vec2D() : Vec2D(0, 0) {}
 
-    Vec2D(float x, float y) : mX(x), mY(y)
-    { }
+    Vec2D(float x, float y) : mX(x), mY(y) {}
 
-    inline void SetX(float x)
-    { mX = x; }
+    inline void SetX(float x) { mX = x; }
 
-    inline void SetY(float y)
-    { mY = y; }
+    inline void SetY(float y) { mY = y; }
 
-    [[nodiscard]] inline float GetX() const
-    { return mX; }
+    [[nodiscard]] inline float GetX() const { return mX; }
 
-    [[nodiscard]] inline float GetY() const
-    { return mY; }
+    [[nodiscard]] inline float GetY() const { return mY; }
 
     friend std::ostream& operator<<(std::ostream& consoleOut, const Vec2D& vec);
     bool operator==(const Vec2D& vec2) const;
@@ -58,7 +50,7 @@ class Vec2D
     [[nodiscard]] Vec2D RotationResult(float angle, const Vec2D& aroundPoint) const;
     friend Vec2D operator*(float scalar, const Vec2D& vec);
 
- private:
+  private:
     float mX, mY;
 };
 

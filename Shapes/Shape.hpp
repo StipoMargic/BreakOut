@@ -10,19 +10,17 @@
 
 class Shape
 {
- public:
-		[[nodiscard]] virtual Vec2D GetCenter() const = 0;
+  public:
+    [[nodiscard]] virtual Vec2D GetCenter() const = 0;
 
-		virtual ~Shape()
-		{ }
+    virtual ~Shape() {}
 
-		[[nodiscard]] inline virtual std::vector<Vec2D> GetPoints() const
-		{ return mPoints; }
+    [[nodiscard]] inline virtual std::vector<Vec2D> GetPoints() const { return mPoints; }
 
-		void MoveBy(const Vec2D& offset);
+    void MoveBy(const Vec2D& offset);
 
- protected:
-		std::vector<Vec2D> mPoints;
+  protected:
+    std::vector<Vec2D> mPoints;
 };
 
-#endif //BREAK_OUT_SHAPES_SHAPE_HPP_
+#endif // BREAK_OUT_SHAPES_SHAPE_HPP_

@@ -14,8 +14,8 @@ typedef std::function<void(uint32_t dt, InputState)> InputAction;
 
 struct ButtonAction
 {
-	InputKey key;
-	InputAction action;
+    InputKey key;
+    InputAction action;
 };
 
-#endif //BREAK_OUT_INPUT_INPUTACTION_HPP_
+#endif // BREAK_OUT_INPUT_INPUTACTION_HPP_

@@ -2,7 +2,6 @@
 // Created by stipo on 09. 04. 2020..
 //
 
-
 #ifndef UTILS_UTILS_HPP
 #define UTILS_UTILS_HPP
 

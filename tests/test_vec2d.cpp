@@ -11,7 +11,7 @@ bool Approx(const Vec2D& a, const Vec2D& b)
 {
     return a.GetX() == doctest::Approx(b.GetX()) && a.GetY() == doctest::Approx(b.GetY());
 }
-}  // namespace
+} // namespace
 
 TEST_CASE("Construction and accessors")
 {
@@ -36,7 +36,7 @@ TEST_CASE("Arithmetic operators")
     CHECK(Approx(a + b, Vec2D(4.0f, 6.0f)));
     CHECK(Approx(b - a, Vec2D(2.0f, 2.0f)));
     CHECK(Approx(a * 2.0f, Vec2D(2.0f, 4.0f)));
-    CHECK(Approx(2.0f * a, Vec2D(2.0f, 4.0f)));     // scalar-on-left friend
+    CHECK(Approx(2.0f * a, Vec2D(2.0f, 4.0f))); // scalar-on-left friend
     CHECK(Approx(b / 2.0f, Vec2D(1.5f, 2.0f)));
     CHECK(Approx(-a, Vec2D(-1.0f, -2.0f)));
 
@@ -64,7 +64,7 @@ TEST_CASE("Magnitude and distance")
 
 TEST_CASE("Dot and Cross")
 {
-    CHECK(Vec2D(1.0f, 0.0f).Dot(Vec2D(0.0f, 1.0f)) == doctest::Approx(0.0f));  // orthogonal
+    CHECK(Vec2D(1.0f, 0.0f).Dot(Vec2D(0.0f, 1.0f)) == doctest::Approx(0.0f)); // orthogonal
     CHECK(Vec2D(1.0f, 2.0f).Dot(Vec2D(3.0f, 4.0f)) == doctest::Approx(11.0f));
 
     CHECK(Vec2D(1.0f, 0.0f).Cross(Vec2D(0.0f, 1.0f)) == doctest::Approx(1.0f));
@@ -106,13 +106,13 @@ TEST_CASE("Rotate mutates, RotationResult does not")
         Vec2D v(1.0f, 0.0f);
         Vec2D r = v.RotationResult(PI / 2.0f, Vec2D::Zero);
         CHECK(Approx(r, Vec2D(0.0f, 1.0f)));
-        CHECK(Approx(v, Vec2D(1.0f, 0.0f)));        // original untouched
+        CHECK(Approx(v, Vec2D(1.0f, 0.0f))); // original untouched
     }
 
     SUBCASE("Rotate around a pivot mutates in place")
     {
         Vec2D v(2.0f, 1.0f);
-        v.Rotate(PI / 2.0f, Vec2D(1.0f, 1.0f));     // rotate about (1,1)
+        v.Rotate(PI / 2.0f, Vec2D(1.0f, 1.0f)); // rotate about (1,1)
         CHECK(Approx(v, Vec2D(1.0f, 2.0f)));
     }
 }

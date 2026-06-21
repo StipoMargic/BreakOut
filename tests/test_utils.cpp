@@ -12,11 +12,11 @@ TEST_CASE("IsEqual respects EPSILON tolerance")
 TEST_CASE("IsGreaterThanOrEqual / IsLessThanOrEqual at the boundary")
 {
     CHECK(IsGreaterThanOrEqual(2.0f, 1.0f));
-    CHECK(IsGreaterThanOrEqual(1.0f, 1.0f));        // equal within epsilon
+    CHECK(IsGreaterThanOrEqual(1.0f, 1.0f)); // equal within epsilon
     CHECK_FALSE(IsGreaterThanOrEqual(1.0f, 2.0f));
 
     CHECK(IsLessThanOrEqual(1.0f, 2.0f));
-    CHECK(IsLessThanOrEqual(1.0f, 1.0f));           // equal within epsilon
+    CHECK(IsLessThanOrEqual(1.0f, 1.0f)); // equal within epsilon
     CHECK_FALSE(IsLessThanOrEqual(2.0f, 1.0f));
 }
 

@@ -14,33 +14,27 @@
 class Scene;
 class App
 {
- public:
-	App();
-	~App();
+  public:
+    App();
+    ~App();
 
-	bool Init(uint32_t width, uint32_t height, uint32_t mag);
-	void Run();
+    bool Init(uint32_t width, uint32_t height, uint32_t mag);
+    void Run();
 
-	inline uint32_t GetWidth() const
-	{
-		return mScreen.GetWidth();
-	}
+    inline uint32_t GetWidth() const { return mScreen.GetWidth(); }
 
-	inline uint32_t GetHeight() const
-	{
-		return mScreen.GetHeight();
-	}
+    inline uint32_t GetHeight() const { return mScreen.GetHeight(); }
 
-	void PushScene(std::unique_ptr<Scene> theScene);
-	void PopScene();
-	Scene* TopScene();
+    void PushScene(std::unique_ptr<Scene> theScene);
+    void PopScene();
+    Scene* TopScene();
 
- private:
-	Screen mScreen;
-	SDL_Window* mnoPtrWindow = nullptr;
+  private:
+    Screen mScreen;
+    SDL_Window* mnoPtrWindow = nullptr;
 
-	std::vector<std::unique_ptr<Scene>> mSceneStack;
-	InputController mInputController;
+    std::vector<std::unique_ptr<Scene>> mSceneStack;
+    InputController mInputController;
 };
 
-#endif //BREAK_OUT_APP_APP_HPP_
+#endif // BREAK_OUT_APP_APP_HPP_

@@ -6,8 +6,8 @@
 
 void Shape::MoveBy(const Vec2D& offset)
 {
-	for (Vec2D& point : mPoints)
-	{
-		point += offset;
-	}
+    for (Vec2D& point : mPoints)
+    {
+        point += offset;
+    }
 }

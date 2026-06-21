@@ -11,19 +11,18 @@
 
 class GameScene : public Scene
 {
- public:
-	GameScene(std::unique_ptr<Game> oPtrGame):mGame(std::move(oPtrGame)){}
+  public:
+    GameScene(std::unique_ptr<Game> oPtrGame) : mGame(std::move(oPtrGame)) {}
 
-	virtual ~GameScene()
-	{
-	}
+    virtual ~GameScene() {}
 
-	virtual void Init(const AARectangle& boundary) override;
-	virtual void Update(uint32_t dt) override;
-	virtual void Draw(Screen& theScreen) override;
-	virtual std::string GetSceneName() const override;
- private:
-	std::unique_ptr<Game> mGame;
+    virtual void Init(const AARectangle& boundary) override;
+    virtual void Update(uint32_t dt) override;
+    virtual void Draw(Screen& theScreen) override;
+    virtual std::string GetSceneName() const override;
+
+  private:
+    std::unique_ptr<Game> mGame;
 };
 
-#endif //BREAK_OUT_SCENES_GAMESCENE_HPP_
+#endif // BREAK_OUT_SCENES_GAMESCENE_HPP_

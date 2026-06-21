@@ -13,15 +13,13 @@ class AARectangle;
 
 class Game
 {
- public:
-	virtual ~Game()
-	{
-	}
+  public:
+    virtual ~Game() {}
 
-	virtual void Init(GameController& gameController, const AARectangle& boundary) = 0;
-	virtual void Update(uint32_t dt) = 0;
-	virtual void Draw(Screen& screen) = 0;
-	virtual const std::string& GetName() = 0;
+    virtual void Init(GameController& gameController, const AARectangle& boundary) = 0;
+    virtual void Update(uint32_t dt) = 0;
+    virtual void Draw(Screen& screen) = 0;
+    virtual const std::string& GetName() = 0;
 };
 
-#endif //BREAK_OUT_GAME_GAME_HPP_
+#endif // BREAK_OUT_GAME_GAME_HPP_

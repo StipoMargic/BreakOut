@@ -44,14 +44,14 @@ TEST_CASE("DistanceFromPoint measures from the query point, not the endpoint")
     CHECK(line.DistanceFromPoint(Vec2D(15.0f, 0.0f), true) == doctest::Approx(5.0f));
 
     // MinDistanceFrom is the known-correct reference; the two must agree.
-    CHECK(line.DistanceFromPoint(Vec2D(5.0f, 5.0f))
-          == doctest::Approx(line.MinDistanceFrom(Vec2D(5.0f, 5.0f))));
+    CHECK(line.DistanceFromPoint(Vec2D(5.0f, 5.0f)) ==
+          doctest::Approx(line.MinDistanceFrom(Vec2D(5.0f, 5.0f))));
 }
 
 TEST_CASE("operator==")
 {
-    CHECK(Line2D(Vec2D(0.0f, 0.0f), Vec2D(1.0f, 1.0f))
-          == Line2D(Vec2D(0.0f, 0.0f), Vec2D(1.0f, 1.0f)));
-    CHECK_FALSE(Line2D(Vec2D(0.0f, 0.0f), Vec2D(1.0f, 1.0f))
-                == Line2D(Vec2D(0.0f, 0.0f), Vec2D(2.0f, 2.0f)));
+    CHECK(Line2D(Vec2D(0.0f, 0.0f), Vec2D(1.0f, 1.0f)) ==
+          Line2D(Vec2D(0.0f, 0.0f), Vec2D(1.0f, 1.0f)));
+    CHECK_FALSE(Line2D(Vec2D(0.0f, 0.0f), Vec2D(1.0f, 1.0f)) ==
+                Line2D(Vec2D(0.0f, 0.0f), Vec2D(2.0f, 2.0f)));
 }

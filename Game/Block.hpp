@@ -12,40 +12,26 @@
 
 class Block : public Excluder
 {
- public:
-	static const int UNBREAKABLE = -1;
+  public:
+    static const int UNBREAKABLE = -1;
 
-	Block() : mColor(Color::Blue()), mHP(1)
-	{
-	}
+    Block() : mColor(Color::Blue()), mHP(1) {}
 
-	void Init(const AARectangle& rectangle, int hp, const Color& color);
-	void Draw(Screen& screen);
-	void Bounce(Ball& ball, BoundaryEdge edge);
+    void Init(const AARectangle& rectangle, int hp, const Color& color);
+    void Draw(Screen& screen);
+    void Bounce(Ball& ball, BoundaryEdge edge);
 
-	inline void ReduceHP()
-	{
-		mHP -= 1;
-	}
+    inline void ReduceHP() { mHP -= 1; }
 
-	[[nodiscard]] inline int GetHP() const
-	{
-		return mHP;
-	}
+    [[nodiscard]] inline int GetHP() const { return mHP; }
 
-	[[nodiscard]] inline bool IsDestroyed() const
-	{
-		return mHP == 0;
-	}
+    [[nodiscard]] inline bool IsDestroyed() const { return mHP == 0; }
 
-	[[nodiscard]] inline Color GetColor() const
-	{
-		return mColor;
-	}
+    [[nodiscard]] inline Color GetColor() const { return mColor; }
 
- private:
-	Color mColor;
-	int mHP;
+  private:
+    Color mColor;
+    int mHP;
 };
 
-#endif //BREAK_OUT_GAME_BLOCK_HPP_
+#endif // BREAK_OUT_GAME_BLOCK_HPP_

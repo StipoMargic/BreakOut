@@ -27,9 +27,9 @@ TEST_CASE("ContainsPoint is inclusive of the edges")
 {
     AARectangle r(Vec2D(0.0f, 0.0f), Vec2D(10.0f, 10.0f));
 
-    CHECK(r.ContainsPoint(Vec2D(5.0f, 5.0f)));      // inside
-    CHECK(r.ContainsPoint(Vec2D(0.0f, 0.0f)));      // on the top-left corner
-    CHECK(r.ContainsPoint(Vec2D(10.0f, 10.0f)));    // on the bottom-right corner
+    CHECK(r.ContainsPoint(Vec2D(5.0f, 5.0f)));   // inside
+    CHECK(r.ContainsPoint(Vec2D(0.0f, 0.0f)));   // on the top-left corner
+    CHECK(r.ContainsPoint(Vec2D(10.0f, 10.0f))); // on the bottom-right corner
     CHECK_FALSE(r.ContainsPoint(Vec2D(-1.0f, 5.0f)));
     CHECK_FALSE(r.ContainsPoint(Vec2D(5.0f, 11.0f)));
 }
@@ -38,12 +38,14 @@ TEST_CASE("Intersects covers every separating-axis branch")
 {
     AARectangle base(Vec2D(0.0f, 0.0f), Vec2D(10.0f, 10.0f));
 
-    CHECK(base.Intersects(AARectangle(Vec2D(5.0f, 5.0f), Vec2D(15.0f, 15.0f))));   // overlap
-    CHECK(base.Intersects(AARectangle(Vec2D(2.0f, 2.0f), Vec2D(4.0f, 4.0f))));     // contained
+    CHECK(base.Intersects(AARectangle(Vec2D(5.0f, 5.0f), Vec2D(15.0f, 15.0f)))); // overlap
+    CHECK(base.Intersects(AARectangle(Vec2D(2.0f, 2.0f), Vec2D(4.0f, 4.0f))));   // contained
 
-    CHECK_FALSE(base.Intersects(AARectangle(Vec2D(20.0f, 0.0f), Vec2D(30.0f, 10.0f))));  // to the right
-    CHECK_FALSE(base.Intersects(AARectangle(Vec2D(-30.0f, 0.0f), Vec2D(-20.0f, 10.0f)))); // to the left
-    CHECK_FALSE(base.Intersects(AARectangle(Vec2D(0.0f, 20.0f), Vec2D(10.0f, 30.0f))));  // below
+    CHECK_FALSE(
+        base.Intersects(AARectangle(Vec2D(20.0f, 0.0f), Vec2D(30.0f, 10.0f)))); // to the right
+    CHECK_FALSE(
+        base.Intersects(AARectangle(Vec2D(-30.0f, 0.0f), Vec2D(-20.0f, 10.0f)))); // to the left
+    CHECK_FALSE(base.Intersects(AARectangle(Vec2D(0.0f, 20.0f), Vec2D(10.0f, 30.0f))));   // below
     CHECK_FALSE(base.Intersects(AARectangle(Vec2D(0.0f, -30.0f), Vec2D(10.0f, -20.0f)))); // above
 }
 
@@ -74,8 +76,8 @@ TEST_CASE("GetPoints returns the four corners")
     auto pts = r.GetPoints();
 
     REQUIRE(pts.size() == 4);
-    CHECK(pts[0] == Vec2D(0.0f, 0.0f));     // top-left
-    CHECK(pts[1] == Vec2D(10.0f, 0.0f));    // top-right
-    CHECK(pts[2] == Vec2D(10.0f, 5.0f));    // bottom-right
-    CHECK(pts[3] == Vec2D(0.0f, 5.0f));     // bottom-left
+    CHECK(pts[0] == Vec2D(0.0f, 0.0f));  // top-left
+    CHECK(pts[1] == Vec2D(10.0f, 0.0f)); // top-right
+    CHECK(pts[2] == Vec2D(10.0f, 5.0f)); // bottom-right
+    CHECK(pts[3] == Vec2D(0.0f, 5.0f));  // bottom-left
 }

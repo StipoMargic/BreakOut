@@ -10,29 +10,24 @@
 
 class Excluder
 {
- public:
-	virtual ~Excluder()
-	{
-	}
+  public:
+    virtual ~Excluder() {}
 
-	void Init(const AARectangle& rectangle, bool reverseNormals = false);
-	bool  HasCollided(const AARectangle& rectangle, BoundaryEdge& edge) const ;
-	Vec2D GetCollisionOffset(const AARectangle& rectangle) const ;
-	void MoveBy(const Vec2D& offset);
-	void MoveTo(const Vec2D& point);
+    void Init(const AARectangle& rectangle, bool reverseNormals = false);
+    bool HasCollided(const AARectangle& rectangle, BoundaryEdge& edge) const;
+    Vec2D GetCollisionOffset(const AARectangle& rectangle) const;
+    void MoveBy(const Vec2D& offset);
+    void MoveTo(const Vec2D& point);
 
-	const BoundaryEdge& GetEdge(EdgeType edge) const;
+    const BoundaryEdge& GetEdge(EdgeType edge) const;
 
-	inline const AARectangle& GetRectangle() const
-	{
-		return mAARectangle;
-	}
+    inline const AARectangle& GetRectangle() const { return mAARectangle; }
 
- private:
-	void SetupEdges();
-	AARectangle mAARectangle;
-	BoundaryEdge mEdges[NUM_EDGES];
-	bool mReverseNormals;
+  private:
+    void SetupEdges();
+    AARectangle mAARectangle;
+    BoundaryEdge mEdges[NUM_EDGES];
+    bool mReverseNormals;
 };
 
-#endif //BREAK_OUT_GAME_EXCLUDER_HPP_
+#endif // BREAK_OUT_GAME_EXCLUDER_HPP_

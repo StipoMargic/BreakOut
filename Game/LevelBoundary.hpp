@@ -10,22 +10,17 @@
 
 class LevelBoundary
 {
- public:
-	LevelBoundary()
-	{
-	}
+  public:
+    LevelBoundary() {}
 
-	LevelBoundary(const AARectangle& boundary);
-	bool HasCollided(const Ball& ball, BoundaryEdge& edge);
+    LevelBoundary(const AARectangle& boundary);
+    bool HasCollided(const Ball& ball, BoundaryEdge& edge);
 
-	inline const AARectangle& GetAARectangle() const
-	{
-		return mIncluder.GetRectangle();
-	}
+    inline const AARectangle& GetAARectangle() const { return mIncluder.GetRectangle(); }
 
- private:
-	Excluder mIncluder;
-	bool HasCollidedWithEdge(const Ball& ball, const BoundaryEdge& edge) const;
+  private:
+    Excluder mIncluder;
+    bool HasCollidedWithEdge(const Ball& ball, const BoundaryEdge& edge) const;
 };
 
-#endif //BREAK_OUT_GAME_LEVELBOUNDARY_HPP_
+#endif // BREAK_OUT_GAME_LEVELBOUNDARY_HPP_

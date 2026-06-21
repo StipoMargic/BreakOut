@@ -12,20 +12,19 @@
 
 class GameLevel
 {
- public:
-	GameLevel()
-	{
-	}
+  public:
+    GameLevel() {}
 
-	void Init(const AARectangle& boundary);
-	void Load(const std::vector<Block>& blocks);
+    void Init(const AARectangle& boundary);
+    void Load(const std::vector<Block>& blocks);
 
-	bool IsLevelComplete() const;
-	void Update(uint32_t dt, Ball& ball);
-	void Draw(Screen& screen);
- private:
-	void DefaultLevel(const AARectangle& boundary);
-	std::vector<Block> mBlocks;
+    bool IsLevelComplete() const;
+    void Update(uint32_t dt, Ball& ball);
+    void Draw(Screen& screen);
+
+  private:
+    void DefaultLevel(const AARectangle& boundary);
+    std::vector<Block> mBlocks;
 };
 
-#endif //BREAK_OUT_GAME_GAMELEVEL_HPP_
+#endif // BREAK_OUT_GAME_GAMELEVEL_HPP_
